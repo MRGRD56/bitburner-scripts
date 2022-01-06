@@ -71,15 +71,20 @@ const multirunScript = (ns, fileName, runsCount, isManyProcesses) => {
 /** @param {NS} ns **/
 export async function main(ns) {
 	/**
-	 * @type {1 | 2}
+	 * @type {0 | 1 | 2}
+	 * 0 - do not run scripts, only download missing files  
 	 * 1 - many threads  
 	 * 2 - many processes
 	 */
-	const mode = +ns.args[0] || 1;
+	const mode = +ns.args[0] ?? 1;
 
 	const hostname = ns.getHostname();
 
 	await downloadMissingFiles(ns);
+
+	if (mode === 0) {
+		return;
+	}
 
 	killRunningProcesses(ns, hostname);
 
