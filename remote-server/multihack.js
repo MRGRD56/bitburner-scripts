@@ -73,8 +73,8 @@ export async function main(ns) {
 	/**
 	 * @type {0 | 1 | 2}
 	 * 0 - do not run scripts, only download missing files  
-	 * 1 - many threads  
-	 * 2 - many processes
+	 * 1 - multiple threads  
+	 * 2 - multiple processes
 	 */
 	const mode = +ns.args[0] ?? 1;
 
