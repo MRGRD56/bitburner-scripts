@@ -60,9 +60,11 @@ const multirunScript = (ns, fileName, runsCount, isManyProcesses) => {
 	if (isManyProcesses) {
 		for (let i = 0; i < runsCount; i++) {
 			ns.run(fileName, 1, i + 1);
+			ns.tprint(`run ${fileName} ${i + 1}`);
 		}
 	} else {
 		ns.run(fileName, runsCount);
+		ns.tprint(`run ${fileName}, ${runsCount} thread(s)`);
 	}
 };
 
@@ -90,7 +92,7 @@ export async function main(ns) {
 
 	const runningScriptsCount = scriptFiles.reduce((result, fileName) => {
 		const maxRunningScriptsCount = Math.floor(availableRam / scriptsRam[fileName]);
-		result[fileName] = Math.round(maxRunningScriptsCount * scriptsRunsPercentage[fileName]);
+		result[fileName] = Math.floor(maxRunningScriptsCount * scriptsRunsPercentage[fileName]);
 		return result;
 	}, {});
 
