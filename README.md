@@ -8,3 +8,7 @@ wget https://raw.githubusercontent.com/MRGRD56/bitburner-scripts/main/remote-ser
 ```sh
 wget https://raw.githubusercontent.com/MRGRD56/bitburner-scripts/main/remote-server/weak.js weak.js
 ```
+
+```sh
+wget https://raw.githubusercontent.com/MRGRD56/bitburner-scripts/main/remote-server/grow.js grow.js
+```
