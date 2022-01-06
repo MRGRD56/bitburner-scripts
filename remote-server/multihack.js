@@ -42,9 +42,10 @@ const downloadMissingFiles = async (ns) => {
 
 /** 
  * @param {NS} ns 
+ * @param {string} hostname
  * @returns {void}
  */
-const killRunningProcesses = (ns) => {
+const killRunningProcesses = (ns, hostname) => {
 	scriptFiles.forEach(fileName => ns.scriptKill(fileName, hostname));
 };
 
@@ -78,7 +79,7 @@ export async function main(ns) {
 
 	await downloadMissingFiles(ns);
 
-	killRunningProcesses(ns);
+	killRunningProcesses(ns, hostname);
 
 	const availableRam = ns.getServerMaxRam(hostname) - ns.getServerUsedRam(hostname);
 
