@@ -22,14 +22,14 @@ wget https://raw.githubusercontent.com/MRGRD56/bitburner-scripts/main/remote-ser
 ```
 
 ```sh
-./multihack.js
+./multihack.js <MODE> <SERVER_NAME>
 ```
 
 *OR*
 
 ```sh
 ./multihack.js 0
-./hack.js -t 30
-./weak.js -t 3
-./grow.js -t 3
+./hack.js -t 30 <SERVER_NAME>
+./weak.js -t 3 <SERVER_NAME>
+./grow.js -t 3 <SERVER_NAME>
 ```
