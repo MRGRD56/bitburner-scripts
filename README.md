@@ -1,7 +1,7 @@
 # bitburner-scripts
 Bitburner Game Scripts
 
-### Server Hacking
+## Server Hacking
 
 [home ~/]
 ```sh
@@ -32,4 +32,33 @@ wget https://raw.githubusercontent.com/MRGRD56/bitburner-scripts/main/remote-ser
 ./hack.js -t 30 <SERVER_NAME>
 ./weak.js -t 3 <SERVER_NAME>
 ./grow.js -t 3 <SERVER_NAME>
+```
+
+## cdnpm.js
+
+```sh
+wget https://github.com/MRGRD56/bitburner-scripts/raw/main/home/cdnpm.js cdnpm.js
+```
+
+#### Package Installation
+
+```sh
+./cdnpm.js [PACKAGE_NAME] <DESTINATION_DIRECTORY>
+```
+
+Example:
+```
+[home ~/]> ./_a/cdnpm.js axios /_a/node_modules/
+
+Running script with 1 thread(s), pid 458 and args: ["axios","/_a/node_modules/"].
+
+/_a/cdnpm.js: Getting package URL...
+
+/_a/cdnpm.js: Downloading library...
+
+/_a/cdnpm.js: Successfully downloaded to '/_a/node_modules/axios.min.js'
+
+[home ~/]> ls /_a/node_modules/
+
+axios.min.js  lodash.min.js 
 ```
