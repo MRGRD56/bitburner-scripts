@@ -1,6 +1,6 @@
 /** @param {NS} ns **/
 export async function main(ns) {
-	const hostName = ns.getHostname();
+	const hostName = ns.args[0] || ns.getHostname();
 
 	while (true) {
 		await ns.grow(hostName);
