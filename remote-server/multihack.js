@@ -52,24 +52,28 @@ const killRunningProcesses = (ns, hostname) => {
 /**
  * @param {NS} ns
  * @param {string} fileName
+ * @param {Array<string | number | boolean>} args
  * @param {number} runsCount
  * @param {boolean} isManyProcesses
  * @returns {void}
  */
-const multirunScript = (ns, fileName, runsCount, isManyProcesses) => {
+const multirunScript = (ns, fileName, args, runsCount, isManyProcesses) => {
 	if (isManyProcesses) {
 		for (let i = 0; i < runsCount; i++) {
-			ns.run(fileName, 1, i + 1);
-			ns.tprint(`run ${fileName} ${i + 1}`);
+			const scriptArgs = [...args, i + 1];
+			ns.run(fileName, 1, ...scriptArgs);
+			ns.tprint(`run ${fileName} ${scriptArgs.join(' ')}`);
 		}
 	} else {
-		ns.run(fileName, runsCount);
-		ns.tprint(`run ${fileName}, ${runsCount} thread(s)`);
+		ns.run(fileName, runsCount, ...args);
+		ns.tprint(`run ${fileName} ${args.join(' ')}, ${runsCount} thread(s)`);
 	}
 };
 
 /** @param {NS} ns **/
 export async function main(ns) {
+	const hostname = ns.getHostname();
+	
 	/**
 	 * @type {0 | 1 | 2}
 	 * 0 - do not run scripts, only download missing files  
@@ -77,8 +81,10 @@ export async function main(ns) {
 	 * 2 - multiple processes
 	 */
 	const mode = +ns.args[0] ?? 1;
-
-	const hostname = ns.getHostname();
+	const scriptArgs = (() => {
+		const args = ns.args.slice(1);
+		return args.length ? args : [hostname];
+	})();
 
 	await downloadMissingFiles(ns);
 
@@ -103,6 +109,6 @@ export async function main(ns) {
 
 	Object.keys(runningScriptsCount).forEach(fileName => {
 		const runsCount = runningScriptsCount[fileName];
-		multirunScript(ns, fileName, runsCount, mode === 2);
+		multirunScript(ns, fileName, scriptArgs, runsCount, mode === 2);
 	});
 }
