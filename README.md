@@ -34,17 +34,19 @@ wget https://raw.githubusercontent.com/MRGRD56/bitburner-scripts/main/remote-ser
 ./grow.js -t 3 <SERVER_NAME>
 ```
 
-## cdnpm.js
+## cdnpm.js *download libraries from cdnjs.com*
 
 ```sh
 wget https://github.com/MRGRD56/bitburner-scripts/raw/main/home/cdnpm.js cdnpm.js
 ```
 
-#### Package Installation
+#### Library Downloading
 
 ```sh
 ./cdnpm.js [PACKAGE_NAME] <DESTINATION_DIRECTORY>
 ```
+
+> `DESTINATION_DIRECTORY` must be an **absolute** path. By default it is `/`.
 
 Example:
 ```
