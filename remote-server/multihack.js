@@ -23,9 +23,9 @@ const downloadMissingFile = async (ns, fileName) => {
 };
 
 const scriptsRunsPercentage = Object.freeze({
-	'hack.js': 0.8,
-	'weak.js': 0.1,
-	'grow.js': 0.1
+	'hack.js': 0.07,
+	'weak.js': 0.15,
+	'grow.js': 0.76
 });
 
 const scriptFiles = Object.freeze(Object.keys(scriptsRunsPercentage));
